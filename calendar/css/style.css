@@ -1,0 +1,402 @@
+body {
+    /* padding: 20px; */
+    background-color: #fff;
+    background-image: url('https://cdn.dribbble.com/users/77121/screenshots/16732595/media/3c89670a569109571a440716f653e49f.gif');
+    background-size: cover;
+}
+
+.block a:hover {
+    color: silver;
+}
+
+.block a {
+    color: #fff;
+}
+
+.block {
+    position: fixed;
+    background: #2184cd;
+    padding: 20px;
+    z-index: 1;
+    top: 240px;
+}
+
+.title {
+    text-align: center;
+    font-weight: 600;
+}
+
+#calendar {
+    border-radius: 22px;
+    background-color: rgba(255, 255, 255, 0.719);
+    padding: 30px;
+    padding-top: 10px;
+}
+
+#clock {
+    text-align: center;
+}
+
+.tile2 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+}
+
+.container {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    border-radius: 22px;
+    background-color: rgba(255, 255, 255, 0.842);
+}
+
+#calendar::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+#calendar::-webkit-scrollbar-track {
+    background: orange;
+    /* color of the tracking area */
+}
+
+#calendar::-webkit-scrollbar-thumb {
+    background-color: rgb(201, 201, 201);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid rgb(124, 124, 124);
+    /* creates padding around scroll thumb */
+}
+
+#createEventModal,
+.modal,
+.fade,
+.modal-content {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+    border: 12px;
+}
+
+.modal-header {
+    background-color: #DBE2EF;
+    background-image: url('https://dlabtech.com/wp-content/uploads/2020/07/a.png');
+    border-radius: 12px 12px 0px 0px;
+}
+
+.fc-today-button,
+.fc-agendaWeek-button,
+.fc-agendaDay-button {
+    text-transform: capitalize;
+}
+
+.fc-day-header,
+.fc-axis {
+    background-color: bisque;
+    font-size: 16px;
+}
+
+.fc-time {
+    background-color: #90cefa;
+    font-size: 16px;
+}
+
+.fc-draggable {
+    background-color: #ccfcbe;
+    color: #112D4E;
+    transition-duration: 1.4s;
+}
+
+.fc-draggable:hover {
+    background-color: #ccfcbe;
+    color: #112D4E;
+    width: 300px;
+    height: 200px;
+}
+
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.fc-title {
+    padding: 10px;
+}
+
+.main {
+    padding: 30px 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+#modalWhen {
+    color: #F6783B;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.when-even {
+    padding: 6px;
+}
+
+.modal-body {
+    height: 380px;
+    overflow-y: scroll;
+}
+
+
+/* ---------- Nav bar */
+
+nav {
+    width: 100%;
+    height: 10%;
+    background: #DBE2EF;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 6px 40px 6px 40px;
+    color: #112D4E;
+    background-image: url('https://dlabtech.com/wp-content/uploads/2020/07/a.png');
+    background-attachment: fixed;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+}
+
+nav h1 {
+    cursor: pointer;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+nav h1 a {
+    text-decoration: none;
+}
+
+nav i {
+    padding: 0 10px;
+}
+
+nav .nav-items-container {
+    width: 40%;
+}
+
+nav .log-btns-container {
+    width: 20%;
+}
+
+nav div ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+nav div ul li {
+    font-weight: 500;
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    text-decoration: none;
+}
+
+nav div ul li:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+nav div ul li a {
+    text-decoration: none;
+    color: #112D4E;
+}
+
+nav .nav-items {
+    width: 100%;
+}
+
+nav .log-btns {
+    width: 100%;
+    text-align: center;
+}
+
+nav .log-btns .log-btn {
+    cursor: pointer;
+    color: #112D4E;
+    background-color: #FFF5BE;
+    padding: 8px 18px;
+    border-radius: 8px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    font-weight: 600;
+    border: #fff 1px solid;
+}
+
+nav .log-btns .log-btn:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.02);
+    -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    transition-duration: 0.6s;
+}
+
+.fa-backpack {
+    color: #F6783B;
+}
+
+nav .hamburger {
+    display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+    nav {
+        position: relative;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    nav .nav-items-container .nav-items {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin: 16px;
+    }
+    nav .nav-items-container .nav-items .nav-item {
+        margin: 12px;
+    }
+    nav .log-btns-container {
+        width: 30%;
+    }
+    nav .log-btns-container .log-btns {
+        margin: 16px;
+        width: 100%;
+    }
+    nav .nav.slide {
+        height: 100px;
+    }
+    nav .hamburger {
+        top: 5px;
+        right: 30px;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        margin: 14px auto;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: 0.5s ease-in-out;
+        transition: 0.5s ease-in-out;
+        cursor: pointer;
+    }
+    nav .hamburger span {
+        display: block;
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        background: #374151;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: 0.25s ease-in-out;
+        transition: 0.25s ease-in-out;
+    }
+    nav .hamburger span:nth-child(1) {
+        top: 8px;
+    }
+    nav .hamburger span:nth-child(2),
+    nav .hamburger span:nth-child(3) {
+        top: 16px;
+    }
+    nav .hamburger span:nth-child(4) {
+        top: 24px;
+    }
+    nav .hamburger.open span:nth-child(1) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+    }
+    nav .hamburger.open span:nth-child(2) {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    nav .hamburger.open span:nth-child(3) {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    nav .hamburger.open span:nth-child(4) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    nav .log-btns {
+        width: 34%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    nav {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    nav .log-btns-container {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    nav .hamburger {
+        right: 12px;
+    }
+}
+
+
+/*------------ footer  ------------*/
+
+.py-3 {
+    background-color: #DBE2EF;
+    background: url('https://enally.in/files-manager/assets/voucher-banner.webp');
+    background-size: contain;
+    background-position-x: 950px;
+    background-repeat: no-repeat;
+    box-shadow: 4px -5px 13px -4px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 4px -5px 13px -4px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 4px -5px 13px -4px rgba(0, 0, 0, 0.08);
+    /* background-color: rgb(226, 131, 87);
+    background-color: rgb(226, 104, 47); */
+    padding: 20px 90px;
+}
+
+h5 {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+
+/* Works on Firefox */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(109, 109, 109) rgb(204, 204, 204);
+}
+
+
+/* Works on Chrome, Edge, and Safari */

@@ -1,0 +1,107 @@
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:flevar.in
+# RewriteEngine on
+# RewriteCond %{HTTPS} off
+# RewriteCond %{HTTP_HOST} (www\.)?notes-https://enally.in/files-manager/
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:flevar.in
+
+# Block indexing or secure directory Listing
+Options -Indexes
+
+# https://enally.in/files-manager/
+### Expiry and Browser Caching Script - PK ###
+## Code Removed
+
+
+############# IMPORTANT #####################################
+# Do not touch anything you don't know. #####################
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+#RewriteRule ^([a-z]+)\/?$ $1.php [NC]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+#RewriteRule ^([a-z]+)\/?$ $1.html [NC]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.asp -f
+RewriteRule ^(.*)$ $1.asp
+#RewriteRule ^([a-z]+)\/?$ $1.asp [NC]
+
+</IfModule>
+
+<IfModule mod_autoindex.c>
+	Options -Indexes
+</IfModule>
+
+
+# Attack Prevention
+RewriteEngine On
+
+# proc/self/environ? no way!
+RewriteCond %{QUERY_STRING} proc/self/environ [OR]
+
+# Block out any script trying to set a mosConfig value through the URL
+RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
+
+# Block out any script trying to base64_encode crap to send via URL
+RewriteCond %{QUERY_STRING} base64_encode.*(.*) [OR]
+
+# Block out any script that includes a <script> tag in URL
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+
+# Block out any script trying to set a PHP GLOBALS variable via URL
+RewriteCond %{QUERY_STRING} GLOBALS(=|[|\%[0-9A-Z]{0,2}) [OR]
+
+# Block out any script trying to modify a _REQUEST variable via URL
+RewriteCond %{QUERY_STRING} _REQUEST(=|[|\%[0-9A-Z]{0,2})
+
+# Send all blocked request to homepage with 403 Forbidden error!
+RewriteRule ^(.*)$ index.php [F,L]
+
+
+# secure htaccess file
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+# multiple file types
+<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
+ Order Allow,Deny
+ Deny from all
+</FilesMatch>
+
+# File Compression --- Doesn't work on Localhost
+# compress text, html, javascript, css, xml:
+# AddOutputFilterByType DEFLATE text/plain
+# AddOutputFilterByType DEFLATE text/html
+# AddOutputFilterByType DEFLATE text/xml
+# AddOutputFilterByType DEFLATE text/css
+# AddOutputFilterByType DEFLATE application/xml
+# AddOutputFilterByType DEFLATE application/xhtml+xml
+# AddOutputFilterByType DEFLATE application/rss+xml
+# AddOutputFilterByType DEFLATE application/javascript
+# AddOutputFilterByType DEFLATE application/x-javascript
+
+
+# Skip Download Dilogue
+AddType application/octet-stream .pdf
+AddType application/octet-stream .zip
+AddType application/octet-stream .mov
+AddType application/octet-stream .ppt
+AddType application/octet-stream .pptx
+AddType application/octet-stream .jpg
+AddType application/octet-stream .jpeg
+
+# Max File Upload
+php_value upload_max_filesize 30M
+php_value post_max_size 30M
